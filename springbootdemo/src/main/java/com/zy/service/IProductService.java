@@ -1,5 +1,6 @@
 package com.zy.service;
 
+import com.zy.entity.Product;
 import com.zy.vo.JsonResult;
 import com.zy.vo.ProductVo;
 
@@ -10,4 +11,6 @@ import com.zy.vo.ProductVo;
  **/
 public interface IProductService {
     JsonResult addProduct(ProductVo vo);
+
+    JsonResult<Product> getProduct(Long pid);
 }

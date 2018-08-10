@@ -1,5 +1,6 @@
 package com.zy.web;
 
+import com.zy.entity.Product;
 import com.zy.service.IProductService;
 import com.zy.vo.JsonResult;
 import com.zy.vo.ProductVo;
@@ -25,12 +26,9 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
-    public JsonResult getHello(HttpServletRequest request, @RequestParam Long pid){
-        JsonResult result = new JsonResult();
-        result.setMsg("获取成功"+pid);
-        result.setCode(JsonResult.SUCCESS);
-        result.setData(pid);
-        result.fail(200,"nihao ");
+    public JsonResult<Product> getHello(HttpServletRequest request, @RequestParam Long pid){
+        JsonResult<Product> result = new JsonResult<Product>();
+        result = productService.getProduct(pid);
         return result;
     }
 

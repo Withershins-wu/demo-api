@@ -32,4 +32,16 @@ public class ProductService implements IProductService {
         result.setData(product.getId());
         return result;
     }
+
+    @Override
+    public JsonResult<Product> getProduct(Long pid) {
+        JsonResult<Product> result = new JsonResult<Product>();
+        Product product = productMapper.selectByPrimaryKey(pid);
+
+        result = result.success("获取商品成功");
+        result.setData(product);
+        return result;
+    }
+
+
 }
