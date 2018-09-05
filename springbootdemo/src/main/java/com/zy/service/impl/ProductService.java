@@ -28,7 +28,7 @@ public class ProductService implements IProductService {
         product.setProSort(vo.getSort());
         productMapper.insertSelective(product);
 
-        result = result.success("添加商品成功");
+        result = result.success("添加商品成功了");
         result.setData(product.getId());
         return result;
     }
