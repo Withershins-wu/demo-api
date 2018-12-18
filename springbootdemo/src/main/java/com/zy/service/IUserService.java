@@ -11,4 +11,6 @@ import com.zy.vo.JsonResult;
  **/
 public interface IUserService {
     JsonResult<JSONObject> addUser(User user);
+
+    JsonResult<JSONObject> uploadImgQiniu(String img) throws Exception;
 }

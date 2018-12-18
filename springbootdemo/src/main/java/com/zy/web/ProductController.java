@@ -1,7 +1,9 @@
 package com.zy.web;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zy.entity.Product;
 import com.zy.service.IProductService;
+import com.zy.service.IUserService;
 import com.zy.vo.JsonResult;
 import com.zy.vo.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+    @Autowired
+    private IUserService userService;
     /**
      * 获取商品
      * @return
@@ -39,4 +43,18 @@ public class ProductController {
         return result;
     }
 
+    /**
+     * 上传图片
+     * @param img //图片base64编码
+     * @return{
+     *         "status": 200,
+     *         "msg": ""
+     *         "data":{key:"" //七牛返回的id}
+     *         }
+     * @throws Exception
+     */
+    @RequestMapping(value = "/uploadImgQiniu", method = RequestMethod.POST)
+    public JsonResult<JSONObject> uploadImgQiniu(HttpServletRequest request, @RequestBody String img) throws Exception {
+        return userService.uploadImgQiniu(img);
+    }
 }
