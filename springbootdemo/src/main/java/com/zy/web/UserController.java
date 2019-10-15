@@ -1,15 +1,19 @@
 package com.zy.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zy.entity.Product;
 import com.zy.entity.User;
-import com.zy.service.IProductService;
+import com.zy.service.IProduceService;
 import com.zy.service.IUserService;
 import com.zy.vo.JsonResult;
-import com.zy.vo.ProductVo;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.activemq.command.ActiveMQQueue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -19,10 +23,15 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @RestController()
 @RequestMapping("/user")
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserController {
 
-    @Autowired
+    @Resource
     private IUserService userService;
+
+    @Resource
+    private IProduceService produceService;
     /**
      * 获取商品
      * @return
@@ -34,5 +43,12 @@ public class UserController {
         return result;
     }
 
+    @Test
+    public void contextLoads(){
+        Destination destination = new ActiveMQQueue("mytest.queue");
 
+        for(int i=0; i<2; i++){
+            produceService.sendMessage(destination, "myname is chhliu!!!");
+        }
+    }
 }
