@@ -1,12 +1,9 @@
 package com.zy.utils;
 
 import com.zy.accessory.ConfigBean;
-import com.zy.service.impl.RedisService;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -76,60 +73,6 @@ public class ToolUtil {
         }
     }
 
-    /**
-     * 随机数
-     * @param instance
-     * @return
-     */
-    public static String generatorId(RedisService instance) {
-        final String order_id_prefix = "JJD_order";
-        Date dt = new Date();
-        DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String tm = df.format(dt);
-        long temp = instance.increase(order_id_prefix);
-        int random = (int) (Math.random() * 9 + 1);
-        int tail = (int) (temp % 1000);
-
-        int tail_000 = tail / 100;
-        int tail_00 = (tail % 100) / 10;
-        int tail_0 = tail % 10;
-        String str = "" + tail_000 + random + tail_00 + tail_0;
-        return tm + str;
-    }
-
-    /**
-     * 图片直接上传不用下载（ 单张图片）
-     *
-     * @param imgBase64 图片base64
-     * @param instance  redis
-     * @return key
-     * @throws Exception
-     */
-    public static String uploadAppPicture(String imgBase64, RedisService instance) throws Exception {
-        String key = ToolUtil.generatorId(instance);
-        byte[] data = convertImageBase64(imgBase64);
-        QiniuApi.uploadFile(key, data);
-        return key;
-    }
-
-    /**
-     * 把图像数据转换为byte数组 【信用中心】
-     */
-    public static byte[] convertImageBase64(String imgStr) throws Exception {
-        if (imgStr == null) // 图像数据为空
-            return null;
-        // 去掉 data:image/jpeg;base64,
-        int nIndex = imgStr.indexOf(",");
-        imgStr = imgStr.substring(nIndex + 1);
-        Base64 decoder = new Base64();
-        byte[] b = decoder.decode(imgStr);// Base64解码 decodeBuffer(imgStr)
-        for (int i = 0; i < b.length; ++i) {
-            if (b[i] < 0) {// 调整异常数据
-                b[i] += 256;
-            }
-        }
-        return b;
-    }
 
     /**
      * 生成二维码（BASE64字符串）

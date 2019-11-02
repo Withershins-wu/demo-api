@@ -20,13 +20,14 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = FirstDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "firstSqlSessionFactory")
 public class FirstDataSourceConfig {
     static final String PACKAGE = "com.zy.dao";
-    static final String MAPPER_LOCATION = "classpath*:/com/zy/mapping/*.xml";
+    static final String MAPPER_LOCATION = "classpath*:/mappings/*.xml";
 
     @Bean(name = "firstDataSource")
     @Primary //必须加此注解，不然报错，下一个类则不需要添加
     @ConfigurationProperties(prefix = "spring.datasource")//读取的配置文件中的前缀
     public DataSource firstDataSource() {
-        return DataSourceBuilder.create().build();
+        DataSource build = DataSourceBuilder.create().build();
+        return build;
     }
     
     @Bean

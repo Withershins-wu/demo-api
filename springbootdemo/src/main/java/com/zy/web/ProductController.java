@@ -32,8 +32,8 @@ public class ProductController {
     @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
     public JsonResult<Product> getHello(HttpServletRequest request, @RequestParam Long pid){
         JsonResult<Product> result = new JsonResult<Product>();
-        result = productService.getProduct(pid);
-        return result;
+//        result = productService.getProduct(pid);
+        return JsonResult.success("success");
     }
 
 

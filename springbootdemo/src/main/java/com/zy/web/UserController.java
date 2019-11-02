@@ -2,14 +2,11 @@ package com.zy.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zy.entity.User;
-import com.zy.service.IProduceService;
 import com.zy.service.IUserService;
 import com.zy.vo.JsonResult;
 import org.apache.activemq.command.ActiveMQQueue;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -23,15 +20,14 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @RestController()
 @RequestMapping("/user")
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class UserController {
 
     @Resource
     private IUserService userService;
 
-    @Resource
-    private IProduceService produceService;
+
+    @Resource // 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装
+    private JmsTemplate jmsTemplate;
     /**
      * 获取商品
      * @return
@@ -39,16 +35,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public JsonResult<JSONObject> registerUser(HttpServletRequest request, @RequestBody User user){
         JsonResult<JSONObject> result = new JsonResult<JSONObject>();
-        result = userService.addUser(user);
-        return result;
-    }
-
-    @Test
-    public void contextLoads(){
-        Destination destination = new ActiveMQQueue("mytest.queue");
-
-        for(int i=0; i<2; i++){
-            produceService.sendMessage(destination, "myname is chhliu!!!");
-        }
+//        result = userService.addUser(user);
+        return JsonResult.success("success");
     }
 }

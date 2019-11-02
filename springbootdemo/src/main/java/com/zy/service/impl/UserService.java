@@ -9,6 +9,8 @@ import com.zy.vo.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * @author zhangyan
  * @date 2018-09-05 18:07
@@ -17,11 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements IUserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
-
-    @Autowired
-    private RedisService redis;
 
     @Override
     public JsonResult<JSONObject> addUser(User user) {
@@ -37,7 +36,7 @@ public class UserService implements IUserService {
         JsonResult<JSONObject> result = new JsonResult<>();
         result.setCode(JsonResult.FAIL);
         JSONObject data = new JSONObject();
-        data.put("key", ToolUtil.uploadAppPicture(img, redis));
+
 
         result.setCode(JsonResult.SUCCESS);
         result.setData(data);
