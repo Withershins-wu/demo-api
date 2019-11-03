@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -21,19 +22,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
+    @Resource
     private IProductService productService;
-    @Autowired
+    @Resource
     private IUserService userService;
     /**
      * 获取商品
      * @return
      */
     @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
-    public JsonResult<Product> getHello(HttpServletRequest request, @RequestParam Long pid){
-        JsonResult<Product> result = new JsonResult<Product>();
-//        result = productService.getProduct(pid);
-        return JsonResult.success("success");
+    public JsonResult<Product> getHello(@RequestParam Long pid){
+        int a= 3;
+        return JsonResult.success("最美了！" + a);
     }
 
 

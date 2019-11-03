@@ -79,7 +79,7 @@ public class WebControllerAop {
         }
     }
 
-    @Pointcut("execution(* loan.web..*.*(..))")
+    @Pointcut("execution(* com.zy.web..*.*(..))")
     public void executeService() {
 
     }
