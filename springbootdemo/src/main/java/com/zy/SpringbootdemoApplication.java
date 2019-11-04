@@ -9,10 +9,15 @@ import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 @EnableJms
-public class SpringbootdemoApplication {
+public class SpringbootdemoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootdemoApplication.class, args);
     }
 
+    @Override//为了打包springboot项目
+    protected SpringApplicationBuilder configure(
+            SpringApplicationBuilder builder) {
+        return builder.sources(this.getClass());
+    }
 }

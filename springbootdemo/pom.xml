@@ -29,6 +29,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!--mybatis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -160,10 +165,10 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/webapp/lib</directory>
-                <targetPath>BOOT-INF/lib/</targetPath>
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
                 <includes>
-                    <include>**/*.jar</include>
+                    <include>**/**</include>
                 </includes>
             </resource>
             <!--指定资源的位置-->
