@@ -33,14 +33,17 @@ public class UserController {
      * 获取商品
      * @return
      */
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerUser(HttpServletRequest request){
-        return "/index.html";
+    @ResponseBody
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public JsonResult registerUser(@RequestBody User user){
+        if (user.getName().equals("张岩") && user.getPwd().equals("111")){
+            return JsonResult.success("success");
+        } else {
+            return JsonResult.fail("用户名或密码错误");
+        }
     }
     @RequestMapping(value = "/register1", method = RequestMethod.GET)
     public String registerUser1(HttpServletRequest request){
-        request.setAttribute("name","姓名：");
-        request.setAttribute("pwd","密码：");
         return "/index";
     }
 }

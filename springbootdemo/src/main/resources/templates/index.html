@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <!--<head>-->
     <!--<meta charset="UTF-8">-->
     <!--&lt;!&ndash; 新 Bootstrap 核心 CSS 文件 &ndash;&gt;-->
     <!--<title>Thymeleaf of First</title>-->
     <!--<link th:href="@{css/hello.css}" href="../static/css/hello.css" rel="stylesheet">-->
 <!--</head>-->
+
+<script src="/js/jquery-3.4.1.min.js"></script>
 <body>
 <p>首页</p>
-<img th:src="@{/niuniu.jpg}"/>
+<!--<img th:src="@{/niuniu.jpg}"/>-->
+
 <table class="table">
     <tr>
-        <th>name</th>
-        <th>age</th>
+        <th>姓名</th>
+        <th><input id="name" type="text" value="输入" /></th>
     </tr>
-    <tr >
-        <td th:text="${name}"></td>
-        <td th:text="${pwd}"></td>
+
+    <tr>
+        <th>密码</th>
+        <th><input id="pwd" type="text" value="输入" /></th>
     </tr>
 
 </table>
+<button type="button" onclick="test()">提交</button>
 
 </body>
+
+<script>
+    //删除教练数据
+    function test(){
+        var adata = {
+            "name" : document.getElementById("name").value,
+            "pwd" : document.getElementById("pwd").value
+        };
+        var data = JSON.stringify(adata);
+        $.ajax({
+            type : "POST",
+            dataType: "json",//通过GET方式上传请求
+            contentType : "application/json",//上传内容格式为json结构
+            data : data,                                 //上传的参数
+            async: false ,
+            url : "/user/register",     //请求的url。与后端@Request Mapping注解中的值一致。
+            success : function(data) {          //请求成功的回调函数
+                if (data.code === 200){
+                    alert("成功");
+                    // window.location.href = "success";
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error : function(e) {           //请求失败的回调函数
+                console.log(e);
+            }
+        });
+    };
+</script>
+
 </html>
