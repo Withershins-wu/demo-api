@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--&lt;!&ndash; 新 Bootstrap 核心 CSS 文件 &ndash;&gt;-->
+    <!--<title>Thymeleaf of First</title>-->
+    <!--<link th:href="@{css/hello.css}" href="../static/css/hello.css" rel="stylesheet">-->
+<!--</head>-->
+<body>
+<p>首页</p>
+<img th:src="@{/niuniu.jpg}"/>
+<table class="table">
+    <tr>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+    <tr >
+        <td th:text="${name}"></td>
+        <td th:text="${pwd}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

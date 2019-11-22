@@ -7,6 +7,7 @@ import com.zy.vo.JsonResult;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018-08-06 16:41
  * @desc hello
  **/
-@RestController()
+@Controller()
 @RequestMapping("/user")
 public class UserController {
 
@@ -32,10 +33,14 @@ public class UserController {
      * 获取商品
      * @return
      */
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public JsonResult<JSONObject> registerUser(HttpServletRequest request, @RequestBody User user){
-        JsonResult<JSONObject> result = new JsonResult<JSONObject>();
-//        result = userService.addUser(user);
-        return JsonResult.success("success");
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String registerUser(HttpServletRequest request){
+        return "/index.html";
+    }
+    @RequestMapping(value = "/register1", method = RequestMethod.GET)
+    public String registerUser1(HttpServletRequest request){
+        request.setAttribute("name","姓名：");
+        request.setAttribute("pwd","密码：");
+        return "/index";
     }
 }
