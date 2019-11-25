@@ -30,31 +30,17 @@ public class ProductController {
      * 获取商品
      * @return
      */
-    @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
-    public JsonResult<Product> getHello(@RequestParam Long pid){
-        int a= 3;
-        return JsonResult.success("最美了！" + a);
-    }
+//    @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
+//    public JsonResult<Product> getHello(@RequestParam Long pid){
+//        int a= 3;
+//        return JsonResult.success("最美了！" + a);
+//    }
+//
+//
+//    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+//    public JsonResult addProduct(HttpServletRequest request, @RequestBody ProductVo vo){
+//        JsonResult result = productService.addProduct(vo);
+//        return result;
+//    }
 
-
-    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public JsonResult addProduct(HttpServletRequest request, @RequestBody ProductVo vo){
-        JsonResult result = productService.addProduct(vo);
-        return result;
-    }
-
-    /**
-     * 上传图片
-     * @param img //图片base64编码
-     * @return{
-     *         "status": 200,
-     *         "msg": ""
-     *         "data":{key:"" //七牛返回的id}
-     *         }
-     * @throws Exception
-     */
-    @RequestMapping(value = "/uploadImgQiniu", method = RequestMethod.POST)
-    public JsonResult<JSONObject> uploadImgQiniu(HttpServletRequest request, @RequestBody String img) throws Exception {
-        return userService.uploadImgQiniu(img);
-    }
 }

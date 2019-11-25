@@ -6,10 +6,14 @@ import com.zy.entity.User;
 import com.zy.service.IUserService;
 import com.zy.utils.ToolUtil;
 import com.zy.vo.JsonResult;
+import com.zy.vo.UserVo;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author zhangyan
@@ -23,24 +27,31 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public JsonResult<JSONObject> addUser(User user) {
+    public JsonResult<JSONObject> addUser(UserVo user) {
         JsonResult result = new JsonResult();
-        userMapper.insert(user);
+        User userTemp = userMapper.selectByEmail(user.getEmail());
+        if (userTemp != null){
+            return JsonResult.fail("该邮箱已经被注册");
+        }
+        if (StringUtils.isBlank(user.getPwd()) || StringUtils.isBlank(user.getRePwd()) || !user.getPwd().equals(user.getRePwd())){
+            return JsonResult.fail("两次密码不一致");
+        }
+        User newUser = new User();
+        BeanUtils.copyProperties(user, newUser);
+        userMapper.insertSelective(newUser);
         result.setCode(JsonResult.SUCCESS);
         result.setMsg("注册成功");
         return result;
     }
 
     @Override
-    public JsonResult<JSONObject> uploadImgQiniu(String img) throws Exception {
-        JsonResult<JSONObject> result = new JsonResult<>();
-        result.setCode(JsonResult.FAIL);
-        JSONObject data = new JSONObject();
-
-
-        result.setCode(JsonResult.SUCCESS);
-        result.setData(data);
-        result.setMsg("图片上传成功");
-        return result;
+    public JsonResult selectByUser(User user) {
+        Integer count = userMapper.selectByUser(user);
+        if (count == 0){
+            return JsonResult.fail("用户名或密码错误");
+        } else {
+            return JsonResult.success("登录成功");
+        }
     }
+
 }

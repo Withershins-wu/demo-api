@@ -6,13 +6,13 @@
 </head>
 <body>
 <p>
-    <sban onclick="toPractice()">练习题库 </sban>
-    <sban>相似练习题查询 </sban>
-    <sban>个性化联系 </sban>
+    <span onclick="toPractice()">练习题库 </span>
+    <span>相似练习题查询 </span>
+    <span>个性化联系 </span>
 </p>
 
 <p>
-    <sban>search:</sban><input id="title" type="text" placeholder="输入"/>
+    <span>search:</span><input id="title" type="text" placeholder="输入"/><button id="search">查询</button>
 </p>
 <table class="table">
     <tr>
@@ -27,4 +27,12 @@
 
 </table>
 </body>
+
+<script>
+    //删除教练数据
+    function toPractice(){
+        window.location.href = "practiceBank";
+    };
+</script>
+
 </html>

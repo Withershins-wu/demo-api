@@ -1,33 +1,33 @@
 package com.zy.entity;
 
 public class Product {
-    private Long id;
+    private Integer id;
 
-    private String proName;
+    private String title;
 
-    private Byte proSort;
+    private String memo;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getProName() {
-        return proName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProName(String proName) {
-        this.proName = proName == null ? null : proName.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public Byte getProSort() {
-        return proSort;
+    public String getMemo() {
+        return memo;
     }
 
-    public void setProSort(Byte proSort) {
-        this.proSort = proSort;
+    public void setMemo(String memo) {
+        this.memo = memo == null ? null : memo.trim();
     }
 }

@@ -3,8 +3,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.0.107:3306/lender?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
-    username: dev
-    password: KRkFcVCbopZbS8R7
+    username: root
+    password: zydata123
     druid:
       initial-size: 5
       min-idle: 5

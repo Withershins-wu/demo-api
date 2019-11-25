@@ -10,7 +10,7 @@ import com.zy.vo.ProductVo;
  * @desc 商品接口
  **/
 public interface IProductService {
-    JsonResult addProduct(ProductVo vo);
-
-    JsonResult<Product> getProduct(Long pid);
+//    JsonResult addProduct(ProductVo vo);
+//
+//    JsonResult<Product> getProduct(Long pid);
 }

@@ -1,18 +1,18 @@
 package com.zy.dao;
 
 import com.zy.entity.Product;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+import com.zy.entity.ProductExample;
 
-@Mapper
 public interface ProductMapper {
-    int deleteByPrimaryKey(Long id);
+    int deleteByExample(ProductExample example);
+
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Product record);
 
     int insertSelective(Product record);
 
-    Product selectByPrimaryKey(Long id);
+    Product selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Product record);
 

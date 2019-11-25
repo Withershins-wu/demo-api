@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.zy.entity.User;
 import com.zy.service.IUserService;
 import com.zy.vo.JsonResult;
+import com.zy.vo.UserVo;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.core.JmsTemplate;
@@ -26,24 +27,51 @@ public class UserController {
     @Resource
     private IUserService userService;
 
-
-    @Resource // 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装
-    private JmsTemplate jmsTemplate;
     /**
-     * 获取商品
+     * 首页--登录
+     * @return
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(){
+        return "login";
+    }
+
+    /**
+     * 登录
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public JsonResult login(@RequestBody User user){
+        return userService.selectByUser(user);
+    }
+
+    /**
+     * 注册
+     * @return
+     */
+    @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
+    public String toRegister(){
+        return "register";
+    }
+
+    /**
+     * 注册
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public JsonResult registerUser(@RequestBody User user){
-        if (user.getName().equals("张岩") && user.getPwd().equals("111")){
-            return JsonResult.success("success");
-        } else {
-            return JsonResult.fail("用户名或密码错误");
-        }
+    public JsonResult register(@RequestBody UserVo user){
+        return userService.addUser(user);
     }
-    @RequestMapping(value = "/register1", method = RequestMethod.GET)
-    public String registerUser1(HttpServletRequest request){
-        return "/index";
+
+    /**
+     * 首页
+     * @return
+     */
+    @RequestMapping(value = "/toPracticeBank", method = RequestMethod.GET)
+    public String toPracticeBank(){
+        return "practiceBank";
     }
+
 }

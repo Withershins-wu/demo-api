@@ -3,6 +3,9 @@ package com.zy.service;
 import com.alibaba.fastjson.JSONObject;
 import com.zy.entity.User;
 import com.zy.vo.JsonResult;
+import com.zy.vo.UserVo;
+
+import java.util.List;
 
 /**
  * @author zhangyan
@@ -10,7 +13,7 @@ import com.zy.vo.JsonResult;
  * @desc 用户
  **/
 public interface IUserService {
-    JsonResult<JSONObject> addUser(User user);
+    JsonResult<JSONObject> addUser(UserVo user);
 
-    JsonResult<JSONObject> uploadImgQiniu(String img) throws Exception;
+    JsonResult selectByUser(User user);
 }

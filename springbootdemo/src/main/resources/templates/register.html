@@ -9,31 +9,37 @@
 
 <script src="/js/jquery-3.4.1.min.js"></script>
 <body>
-<p>首页</p>
+<p>注册</p>
 <!--<img th:src="@{/niuniu.jpg}"/>-->
 
 <table class="table">
     <tr>
-        <th>姓名</th>
-        <th><input id="name" type="text" value="输入" /></th>
+        <th>用户名</th>
+        <th><input id="email" type="text" placeholder="请输入邮箱" /></th>
     </tr>
 
     <tr>
         <th>密码</th>
-        <th><input id="pwd" type="text" value="输入" /></th>
+        <th><input id="pwd" type="password" placeholder="请输入密码" /></th>
+    </tr>
+    <tr>
+        <th>确认密码</th>
+        <th><input id="rePwd" type="password" placeholder="请再次输入密码" /></th>
     </tr>
 
 </table>
-<button type="button" onclick="test()">提交</button>
+<span><button type="button" onclick="register()">注册</button></span>
+<span><button type="button" onclick="login()">去登录</button></span>
 
 </body>
 
 <script>
-    //删除教练数据
-    function test(){
+    //登录
+    function register(){
         var adata = {
-            "name" : document.getElementById("name").value,
-            "pwd" : document.getElementById("pwd").value
+            "email" : document.getElementById("email").value,
+            "pwd" : document.getElementById("pwd").value,
+            "rePwd" : document.getElementById("rePwd").value
         };
         var data = JSON.stringify(adata);
         $.ajax({
@@ -46,7 +52,7 @@
             success : function(data) {          //请求成功的回调函数
                 if (data.code === 200){
                     alert("成功");
-                    // window.location.href = "success";
+                    window.location.href = "index";
                 } else {
                     alert(data.msg);
                 }
@@ -56,6 +62,10 @@
             }
         });
     };
+    function login(){
+        window.location.href = "index";
+    };
+
 </script>
 
 </html>
