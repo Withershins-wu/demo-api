@@ -1,3 +1,6 @@
+server:
+  port: 8081
+  servlet-path: /demo
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
