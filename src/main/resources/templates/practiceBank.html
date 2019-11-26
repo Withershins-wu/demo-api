@@ -27,22 +27,12 @@
 </body>
 
 <script>
-    //删除教练数据
     function practiceList(){
-        var adata = {
-            "pageNum" : 1,
-            "pageSize" : 10
-        };
-        var data = JSON.stringify(adata);
-        $.ajax({
-            type : "GET",
-            // dataType: "json",//通过GET方式上传请求
-            // contentType : "application/json",//上传内容格式为json结构
-            // data : data,                                 //上传的参数
-            async: false ,
-            url : "/practice/getPractices"
-        });
+        window.location.href = "/demo/practice/getPractices";
     };
+</script>
+<script type="text/javascript">
+    window.location.href = "/demo/practice/getPractices";
 </script>
 
 </html>

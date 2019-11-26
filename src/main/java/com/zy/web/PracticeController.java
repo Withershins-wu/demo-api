@@ -19,7 +19,7 @@ import java.util.List;
  * @date 2018-08-06 16:41
  * @desc hello
  **/
-@Controller()
+@RestController()
 @RequestMapping("/practice")
 public class PracticeController {
 
@@ -31,14 +31,14 @@ public class PracticeController {
      * 获取商品
      * @return
      */
-    @RequestMapping(value = "/getPractices", method = RequestMethod.GET)
-    public String getPractices(Model model){
-        PageVo vo = new PageVo();
+    @RequestMapping(value = "/getPractices", method = RequestMethod.POST)
+    public JsonResult getPractices(@RequestBody PageVo vo){
+        JsonResult result = new JsonResult();
         vo.setPageNum(1);
         vo.setPageSize(10);
         List<Practice> list = practiceService.selectAllPractice(vo);
-        model.addAttribute("practiceList", list);
-        return "practicebank";
+        result.setData(list);
+        return result;
     }
 
 //

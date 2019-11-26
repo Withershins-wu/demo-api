@@ -1,6 +1,13 @@
 server:
-  port: 8080
-  name: demo
+  port: 8081
+  servlet-path: /demo
+
+# swagger config
+swagger:
+  enabled: true
+  title: demo接口文档
+  version: local
+  base-package: com.zy
 
 spring:
   datasource:
