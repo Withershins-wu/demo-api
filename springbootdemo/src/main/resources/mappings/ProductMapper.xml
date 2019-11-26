@@ -48,12 +48,6 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zy.entity.ProductExample" >
-    delete from product
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <insert id="insert" parameterType="com.zy.entity.Product" >
     insert into product (id, title, memo
       )

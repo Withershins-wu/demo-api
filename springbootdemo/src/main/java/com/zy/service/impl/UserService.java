@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +39,7 @@ public class UserService implements IUserService {
         }
         User newUser = new User();
         BeanUtils.copyProperties(user, newUser);
+        newUser.setCreateTime(new Date());
         userMapper.insertSelective(newUser);
         result.setCode(JsonResult.SUCCESS);
         result.setMsg("注册成功");

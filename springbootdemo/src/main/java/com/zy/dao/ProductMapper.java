@@ -1,10 +1,8 @@
 package com.zy.dao;
 
 import com.zy.entity.Product;
-import com.zy.entity.ProductExample;
 
 public interface ProductMapper {
-    int deleteByExample(ProductExample example);
 
     int deleteByPrimaryKey(Integer id);
 
