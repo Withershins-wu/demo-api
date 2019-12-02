@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018-08-06 16:41
  * @desc hello
  **/
-@Api("userController")
+@Api("用户相关")
 @RestController()
 @RequestMapping("/user")
 public class UserController {
@@ -30,50 +30,25 @@ public class UserController {
     @Resource
     private IUserService userService;
 
-//    /**
-//     * 首页--登录
-//     * @return
-//     */
-//    @RequestMapping(value = "/index", method = RequestMethod.GET)
-//    public String index(){
-//        return "login";
-//    }
-
     /**
      * 登录
      * @return
      */
     @ApiOperation("登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public JsonResult login(@RequestBody User user){
+    public JsonResult login(@RequestBody UserVo user){
         return userService.selectByUser(user);
     }
 
-//    /**
-//     * 注册
-//     * @return
-//     */
-//    @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
-//    public String toRegister(){
-//        return "register";
-//    }
 
     /**
      * 注册
      * @return
      */
+    @ApiOperation("注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public JsonResult register(@RequestBody UserVo user){
         return userService.addUser(user);
     }
-
-//    /**
-//     * 首页
-//     * @return
-//     */
-//    @RequestMapping(value = "/toPracticeBank", method = RequestMethod.GET)
-//    public String toPracticeBank(){
-//        return "practiceBank";
-//    }
 
 }

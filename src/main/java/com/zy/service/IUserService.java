@@ -15,5 +15,5 @@ import java.util.List;
 public interface IUserService {
     JsonResult<JSONObject> addUser(UserVo user);
 
-    JsonResult selectByUser(User user);
+    JsonResult selectByUser(UserVo user);
 }

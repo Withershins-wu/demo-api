@@ -1,6 +1,7 @@
 package com.zy.dao;
 
 import com.zy.entity.User;
+import com.zy.vo.UserVo;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    Integer selectByUser(User user);
+    Integer selectByUser(UserVo user);
 
     User selectByEmail(String email);
 }

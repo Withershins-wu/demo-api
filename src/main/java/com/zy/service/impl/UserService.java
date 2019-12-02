@@ -47,7 +47,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public JsonResult selectByUser(User user) {
+    public JsonResult selectByUser(UserVo user) {
         Integer count = userMapper.selectByUser(user);
         if (count == 0){
             return JsonResult.fail("用户名或密码错误");

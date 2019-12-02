@@ -117,7 +117,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUser" resultType="Integer" parameterType="com.zy.entity.User" >
+  <select id="selectByUser" resultType="Integer" parameterType="com.zy.vo.UserVo" >
     select
     count(1)
     from user
