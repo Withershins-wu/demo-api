@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @date 2018-08-06 16:41
  * @desc hello
  **/
-@Api("用户相关")
+@Api(tags = "用户相关")
 @RestController()
 @RequestMapping("/user")
 public class UserController {
