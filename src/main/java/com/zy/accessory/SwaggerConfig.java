@@ -28,13 +28,13 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("Spring Boot 使用 Swagger2 构建RESTful API")
+                .title("RESTful API FOR DEMO")
                 //创建人
                 .contact(new Contact("zy","",""))
                 //版本号
                 .version("1.0")
                 //描述
-                .description("API 描述")
+                .description("接口文档")
                 .build();
     }
 }
