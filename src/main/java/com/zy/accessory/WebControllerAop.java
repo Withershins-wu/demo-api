@@ -2,7 +2,7 @@ package com.zy.accessory;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.zy.vo.JsonResult;
+import com.zy.vo.base.JsonResult;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;

@@ -19,7 +19,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    Integer selectByUser(UserVo user);
+    User selectByUser(UserVo user);
 
     User selectByEmail(String email);
 }

@@ -1,11 +1,8 @@
 package com.zy.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zy.entity.User;
-import com.zy.vo.JsonResult;
+import com.zy.vo.base.JsonResult;
 import com.zy.vo.UserVo;
-
-import java.util.List;
 
 /**
  * @author zhangyan

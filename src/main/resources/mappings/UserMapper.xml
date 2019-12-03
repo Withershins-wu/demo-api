@@ -117,9 +117,9 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUser" resultType="Integer" parameterType="com.zy.vo.UserVo" >
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="com.zy.vo.UserVo" >
     select
-    count(1)
+    <include refid="Base_Column_List" />
     from user
     where email = #{email,jdbcType=VARCHAR} and pwd = #{pwd,jdbcType=VARCHAR}
   </select>

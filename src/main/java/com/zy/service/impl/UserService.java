@@ -4,17 +4,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.zy.dao.UserMapper;
 import com.zy.entity.User;
 import com.zy.service.IUserService;
-import com.zy.utils.ToolUtil;
-import com.zy.vo.JsonResult;
+import com.zy.vo.base.JsonResult;
 import com.zy.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author zhangyan
@@ -48,10 +45,12 @@ public class UserService implements IUserService {
 
     @Override
     public JsonResult selectByUser(UserVo user) {
-        Integer count = userMapper.selectByUser(user);
-        if (count == 0){
+        JsonResult result = new JsonResult();
+        User uu = userMapper.selectByUser(user);
+        if (uu == null){
             return JsonResult.fail("用户名或密码错误");
         } else {
+            result.setData(uu);
             return JsonResult.success("登录成功");
         }
     }

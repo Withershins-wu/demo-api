@@ -115,9 +115,24 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="com.zy.vo.PracticeVo">
     select
     <include refid="Base_Column_List" />
     from practice
+    <where>
+      <if test="title != null and title != ''" >
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="url != null and url != ''" >
+        AND url = #{url,jdbcType=VARCHAR}
+      </if>
+      <if test="memo != null and memo != ''" >
+        AND memo = #{memo,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+    </where>
+    order by create_time desc
   </select>
 </mapper>

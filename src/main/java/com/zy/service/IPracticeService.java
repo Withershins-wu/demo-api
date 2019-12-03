@@ -1,7 +1,9 @@
 package com.zy.service;
 
 import com.zy.entity.Practice;
-import com.zy.vo.PageVo;
+import com.zy.vo.PracticeVo;
+import com.zy.vo.base.DataGridResult;
+import com.zy.vo.base.JsonResult;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
  * @desc 商品接口
  **/
 public interface IPracticeService {
-    List<Practice> selectAllPractice(PageVo pageVo);
+    JsonResult<DataGridResult<List<Practice>>> selectAllPractice(PracticeVo vo);
 //    JsonResult addProduct(ProductVo vo);
 //
 //    JsonResult<Product> getProduct(Long pid);

@@ -1,5 +1,7 @@
-package com.zy.vo;
+package com.zy.vo.base;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -7,13 +9,17 @@ import lombok.Data;
  * @date 2018-08-09 15:05
  * @desc 输出Vo
  **/
+@ApiModel("输出vo")
 @Data
 public class JsonResult<T> {
 
     public static final int SUCCESS = 200;// 成功
     public static final int FAIL = 201;// 失败
+    @ApiModelProperty("200：成功，201：失败")
     private Integer code;
+    @ApiModelProperty("返回信息")
     private String msg = "";
+    @ApiModelProperty("返回数据")
     private T data;
 
     public static JsonResult fail(String msg) {

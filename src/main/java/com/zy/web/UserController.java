@@ -1,21 +1,13 @@
 package com.zy.web;
 
-import com.alibaba.fastjson.JSONObject;
-import com.zy.entity.User;
 import com.zy.service.IUserService;
-import com.zy.vo.JsonResult;
+import com.zy.vo.base.JsonResult;
 import com.zy.vo.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.activemq.command.ActiveMQQueue;
-import org.springframework.jms.core.JmsMessagingTemplate;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.jms.*;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhangyan
