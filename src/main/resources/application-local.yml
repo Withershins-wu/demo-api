@@ -1,6 +1,5 @@
 server:
-  port: 8081
-  servlet-path: /demo
+  port: 8080
 
 # swagger config
 swagger:
