@@ -2,6 +2,8 @@ package com.zy.dao;
 
 
 import com.zy.entity.Practice;
+import com.zy.vo.PracticeHistoryAddVo;
+import com.zy.vo.PracticeHistoryVo;
 import com.zy.vo.PracticeVo;
 
 import java.util.List;
@@ -20,4 +22,10 @@ public interface PracticeMapper {
     int updateByPrimaryKey(Practice record);
 
     List<Practice> selectByParams(PracticeVo vo);
+
+    List<Practice> selectLikePractice(PracticeVo vo);
+
+    Practice selectByTitle(String title);
+
+    List<PracticeHistoryVo> selectHistoryPractices(PracticeHistoryAddVo vo);
 }
