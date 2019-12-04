@@ -51,7 +51,7 @@ public class PracticeController {
     }
 
     @ApiOperation("获取历史联系记录")
-    @RequestMapping(value = "/addPracticesHistory", method = RequestMethod.POST)
+    @RequestMapping(value = "/getPracticesHistory", method = RequestMethod.POST)
     public JsonResult<DataGridResult<List<PracticeHistoryVo>>> getPracticesHistory(@RequestBody PracticeHistoryAddVo vo){
         return practiceService.getPracticesHistory(vo);
     }
