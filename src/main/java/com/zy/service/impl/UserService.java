@@ -51,7 +51,9 @@ public class UserService implements IUserService {
             return JsonResult.fail("用户名或密码错误");
         } else {
             result.setData(uu);
-            return JsonResult.success("登录成功");
+            result.setCode(JsonResult.SUCCESS);
+            result.setMsg("success");
+            return result;
         }
     }
 
