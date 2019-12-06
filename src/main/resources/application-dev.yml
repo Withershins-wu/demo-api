@@ -1,6 +1,6 @@
 server:
   port: 8080
-
+  context-path: /demo
 # swagger config
 
 swagger:
@@ -10,6 +10,8 @@ swagger:
   base-package: com.zy
 
 spring:
+  jmx:
+    enabled: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
