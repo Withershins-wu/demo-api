@@ -161,4 +161,9 @@
 LEFT JOIN practice b ON a.practice_id = b.id
 WHERE a.user_id = #{userId,jdbcType=INTEGER} ORDER BY a.create_time DESC
   </select>
+
+  <select id="selectRecommendPractices" resultType="com.zy.entity.Practice" parameterType="java.lang.Integer">
+    SELECT * from practice b
+    WHERE b.id not in (SELECT practice_id FROM user_practice a WHERE a.user_id= #{userId,jdbcType=INTEGER})
+  </select>
 </mapper>

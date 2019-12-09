@@ -22,6 +22,8 @@ public interface IPracticeService {
     JsonResult addPracticesHistory(PracticeHistoryAddVo vo);
 
     JsonResult<DataGridResult<List<PracticeHistoryVo>>> getPracticesHistory(PracticeHistoryAddVo vo);
+
+    JsonResult<List<Practice>> getRecommendPractices(Integer userId);
 //    JsonResult addProduct(ProductVo vo);
 //
 //    JsonResult<Product> getProduct(Long pid);

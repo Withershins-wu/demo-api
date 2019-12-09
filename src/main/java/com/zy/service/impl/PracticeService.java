@@ -14,7 +14,9 @@ import com.zy.vo.base.JsonResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author zhangyan
@@ -76,6 +78,37 @@ public class PracticeService implements IPracticeService {
         result.setData(dataGridResult);
         result.setCode(JsonResult.SUCCESS);
         result.setMsg("success");
+        return result;
+    }
+
+    @Override
+    public JsonResult<List<Practice>> getRecommendPractices(Integer userId) {
+        JsonResult result = new JsonResult();
+        List<Practice> newList = new ArrayList<>();
+        List<Integer> flagList = new ArrayList<>();
+
+        List<Practice> list = practiceMapper.selectRecommendPractices(userId);
+        if (list.size() > 10){
+            for (int i = 0; i < list.size() ; i++){
+                //推荐最多10条
+                if (newList.size() > 10){
+                    break;
+                }
+                Random random = new Random();
+                int index = random.nextInt(list.size());
+                // 不包含添加
+                if (!flagList.contains(index)){
+                    newList.add(list.get(index));
+                    flagList.add(index);
+                }
+            }
+        } else {
+            newList = list;
+        }
+
+        result.setCode(JsonResult.SUCCESS);
+        result.setMsg("success");
+        result.setData(newList);
         return result;
     }
 }

@@ -28,4 +28,6 @@ public interface PracticeMapper {
     Practice selectByTitle(String title);
 
     List<PracticeHistoryVo> selectHistoryPractices(PracticeHistoryAddVo vo);
+
+    List<Practice> selectRecommendPractices(Integer userId);
 }

@@ -9,6 +9,7 @@ import com.zy.vo.base.DataGridResult;
 import com.zy.vo.base.JsonResult;
 import com.zy.vo.PracticeVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,6 +55,13 @@ public class PracticeController {
     @RequestMapping(value = "/getPracticesHistory", method = RequestMethod.POST)
     public JsonResult<DataGridResult<List<PracticeHistoryVo>>> getPracticesHistory(@RequestBody PracticeHistoryAddVo vo){
         return practiceService.getPracticesHistory(vo);
+    }
+
+    @ApiOperation("获取推荐练习题")
+    @RequestMapping(value = "/getRecommendPractices", method = RequestMethod.GET)
+    @ApiModelProperty("用户id")
+    public JsonResult<List<Practice>> getRecommendPractices(@RequestParam Integer userId){
+        return practiceService.getRecommendPractices(userId);
     }
 
 
