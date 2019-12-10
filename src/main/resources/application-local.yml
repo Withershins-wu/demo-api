@@ -1,4 +1,4 @@
-server:
+  server:
   port: 8080
 
 # swagger config
@@ -22,10 +22,10 @@ spring:
       max-wait: 60000
       timeBetweenEvictionRunsMillis: 60000
       minEvictableIdleTimeMillis: 1800000
-      validationQuery: SELECT 1 FROM DUAL
+      validationQuery: SELECT 1
       testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
+      testOnBorrow: true
+      testOnReturn: true
       poolPreparedStatements: true
       maxPoolPreparedStatementPerConnectionSize: 50
       connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
