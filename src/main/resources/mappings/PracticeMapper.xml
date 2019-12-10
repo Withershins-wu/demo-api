@@ -141,7 +141,7 @@
     <include refid="Base_Column_List" />
     from practice
     <where>
-      type in (select type from practice WHERE title like '%${title}%')
+      type in (select type from practice WHERE title = #{title})
     </where>
     order by create_time desc
   </select>
