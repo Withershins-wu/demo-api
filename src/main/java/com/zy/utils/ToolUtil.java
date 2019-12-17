@@ -18,6 +18,16 @@ import java.util.*;
 
 public class ToolUtil {
 
+    volatile int a=100;
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
     private static Logger log = Logger.getLogger(ToolUtil.class);
 
     @Autowired
