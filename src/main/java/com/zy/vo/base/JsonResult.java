@@ -28,6 +28,17 @@ public class JsonResult<T> {
         result.setMsg(msg);
         return result;
     }
+
+    public static JsonResult fail(int status, String msg) {
+        if (status == SUCCESS) {
+            throw new RuntimeException("ok is not fail");
+        }
+        JsonResult result = new JsonResult();
+        result.setCode(status);
+        result.setMsg(msg);
+        return result;
+    }
+
     public static JsonResult success(String msg) {
         JsonResult result = new JsonResult();
         result.setCode(JsonResult.SUCCESS);

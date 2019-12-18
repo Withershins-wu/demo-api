@@ -47,46 +47,4 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        ToolUtil toolUtil = new ToolUtil();
-        for (int i=0; i< 100; i++){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    synchronized (this){
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        toolUtil.setA(toolUtil.getA() - 1);
-                    }
-
-                }
-            }).start();
-            if (i==99){
-                System.out.println("99");
-            }
-        }
-        Thread.sleep(6000);
-        System.out.println(toolUtil.getA());
-//        Jedis jedis = new Jedis();
-//        jedis.set("a","100");
-//        for (int i=0; i< 100; i++){
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        Thread.sleep(100);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    jedis.decr("a");
-//                }
-//            }).start();
-//        }
-//        Thread.sleep(2000);
-//        System.out.println(jedis.get("a"));
-
-    }
 }
